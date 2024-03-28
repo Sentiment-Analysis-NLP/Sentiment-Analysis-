@@ -41,10 +41,10 @@ def get_sentiment(data):
 
 
 if __name__ == '__main__':
-  setup()
-  data, dataset = Scrape()
-  output = get_sentiment(data)
-  Gui(output)
+  # setup()
+  # data, dataset = Scrape()
+  # output = get_sentiment(data)
+  Gui()
 
   # Apply the extraction function to the 'title' column
 

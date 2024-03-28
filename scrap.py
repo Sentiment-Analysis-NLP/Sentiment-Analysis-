@@ -10,16 +10,13 @@ def Scrape(subreddit="IndianStockMarket", time = 'month'):
     data = []
 
     for sub in top_sub:
-        print(sub.title)
-        print(sub.selftext)
-        sub
+        # print(sub.title)
+        # print(sub.selftext)
+        # sub
         data.append([sub.title, sub.selftext])
         # sub.comment_sort = "confidence"  #
     dataset = Save_csv(data)
     return dataset , data
-
-    
-
 def Save_csv(data = []):
     dataset = pd.DataFrame(data, columns=['Title', 'Content'])
     dataset.to_csv("data.csv", index=False)
