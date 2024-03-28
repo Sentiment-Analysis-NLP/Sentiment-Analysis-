@@ -1,3 +1,4 @@
+from gui import *
 from scrap import *
 from setup import *
 import pandas as pd
@@ -43,6 +44,7 @@ if __name__ == '__main__':
   setup()
   data, dataset = Scrape()
   output = get_sentiment(data)
+  Gui(output)
 
   # Apply the extraction function to the 'title' column
 
