@@ -21,16 +21,16 @@ def get_sentiment(data):
 
   spaceit = spacy.load('en_core_web_sm')
   # stb = SpacyTextBlob()
-  spaceit.add_pipe('SpacyTextBlob')
+  spaceit.add_pipe('spacytextblob')
   data['title_subjectivity'] = data['Title'].apply(
-      lambda x: spaceit(x)._.sentiment.subjectivity)
+      lambda x: spaceit(x)._.blob.subjectivity)
   data['title_polarity'] = data['Title'].apply(
-      lambda x: spaceit(x)._.sentiment.polarity)
+      lambda x: spaceit(x)._.blob.polarity)
 
   data['content_subjectivity'] = data['Content'].apply(
-      lambda x: spaceit(x)._.sentiment.subjectivity)
+      lambda x: spaceit(x)._.blob.subjectivity)
   data['content_polarity'] = data['Content'].apply(
-      lambda x: spaceit(x)._.sentiment.polarity)
+      lambda x: spaceit(x)._.blob.polarity)
   data.head(5)
 
   # Save the DataFrame with the new column back to CSV
