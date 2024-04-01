@@ -42,10 +42,12 @@ def get_sentiment(data):
 
 if __name__ == '__main__':
   # setup()
-  # data, dataset = Scrape()
-  # output = get_sentiment(data)
-  Gui()
-
-  # Apply the extraction function to the 'title' column
+  # print("Getting data...")
+  data, dataset = Scrape()
+  # print("Data Acquired Successfully...")
+  # print("Generating sentiment analysis...")
+  output = get_sentiment(data)
+  print("Sentiment analysis complete...")
+  Gui(output)
 
 # Read CSV file

@@ -2,7 +2,7 @@ from reddit_bot import reddit_instance
 import praw
 import pandas as pd
 
-def Scrape(subreddit="IndianStockMarket", time = 'month'):
+def Scrape(subreddit="IndianStockMarket", time = 'week'):
 
     subreddit = reddit_instance.subreddit(subreddit)
 
