@@ -6,3 +6,5 @@ spacy==3.7.4
 spacytextblob==4.0.0
 plotly
 streamlit
+matplotlib
+seaborn
