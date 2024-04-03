@@ -1,7 +1,8 @@
 import praw
 
 username = 'No_Hall_664'
-password = input("Enter your Reddit password: ")
+# password = input("Enter your Reddit password: ")
+password = 'aman06062003'
 client_id = 'tghQei_hJGceWu0dnzTfWg'
 client_secret = 'Gpomlr4ozb362AHzi4zYC93KwQSmhg'
 
