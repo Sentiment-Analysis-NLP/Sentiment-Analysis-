@@ -14,19 +14,25 @@ def extract_stock_names_spacy(title):
   nlp = spacy.load("en_core_web_sm")
   doc = nlp(title)
   stock_names = [ent.text for ent in doc.ents if ent.label_ == "ORG"]
+  stock_names += [
+      token.text for token in doc
+      if token.pos_ == "PROPN" and token.text.isupper()
+  ]
   return stock_names
 
 
 def get_sentiment(data):
-  data['stock_names'] = data['Title'].apply(extract_stock_names_spacy)
+  data['stock_names'] = data['Content'].apply(
+      extract_stock_names_spacy) + data['Title'].apply(
+          extract_stock_names_spacy)
 
   spaceit = spacy.load('en_core_web_sm')
   # stb = SpacyTextBlob()
   spaceit.add_pipe('spacytextblob')
-  data['title_subjectivity'] = data['Title'].apply(
-      lambda x: spaceit(x)._.blob.subjectivity)
-  data['title_polarity'] = data['Title'].apply(
-      lambda x: spaceit(x)._.blob.polarity)
+  # data['title_subjectivity'] = data['Title'].apply(
+  #     lambda x: spaceit(x)._.blob.subjectivity)
+  # data['title_polarity'] = data['Title'].apply(
+  #     lambda x: spaceit(x)._.blob.polarity)
 
   data['content_subjectivity'] = data['Content'].apply(
       lambda x: spaceit(x)._.blob.subjectivity)
@@ -43,11 +49,11 @@ def get_sentiment(data):
 if __name__ == '__main__':
   # setup()
   # print("Getting data...")
-  data, dataset = Scrape()
+  # data, dataset = Scrape()
   # print("Data Acquired Successfully...")
   # print("Generating sentiment analysis...")
-  output = get_sentiment(data)
-  print("Sentiment analysis complete...")
-  Gui(output)
+  # output = get_sentiment(data)
+  # print("Sentiment analysis complete...")
+  Gui()
 
 # Read CSV file
